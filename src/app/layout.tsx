@@ -15,9 +15,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Richard Strauss - Product Leader & Founder",
+  title: "Richard Strauss - Product Leader",
   description:
     "Professional portfolio of Richard Strauss - Product Leader specializing in SaaS platforms, B2C/B2B2C products, and generative AI applications",
+  icons: {
+    icon: [
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
