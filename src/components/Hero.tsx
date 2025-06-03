@@ -79,7 +79,7 @@ export default function Hero() {
               B2B2C spaces. 9+ years leading products through conception, high
               growth, and scaling phases. Currently leading multiple products
               for AIR MILES, implementing LLMs and OCR technology for receipt
-              processing and ML models for personalization.
+              processing and ML models for rewards personalization.
             </motion.p>
 
             <motion.div
