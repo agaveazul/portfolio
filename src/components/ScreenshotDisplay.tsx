@@ -71,9 +71,9 @@ export default function ScreenshotDisplay() {
                 <Image
                   src={currentAssets.mobileScreenshot}
                   alt="Mobile App Screenshot 1"
-                  width={300}
-                  height={600}
-                  className="w-auto h-[36rem] rounded-2xl"
+                  width={250}
+                  height={500}
+                  className="w-auto h-80 rounded-2xl"
                   priority
                 />
               </div>
@@ -104,9 +104,9 @@ export default function ScreenshotDisplay() {
                 <Image
                   src={currentAssets.mobileScreenshot2!}
                   alt="Mobile App Screenshot 2"
-                  width={300}
-                  height={600}
-                  className="w-auto h-[36rem] rounded-2xl"
+                  width={250}
+                  height={500}
+                  className="w-auto h-80 rounded-2xl"
                   priority
                 />
               </div>
@@ -140,9 +140,9 @@ export default function ScreenshotDisplay() {
                 <Image
                   src={currentAssets.mobileScreenshot}
                   alt="Mobile App Screenshot"
-                  width={300}
-                  height={600}
-                  className="w-auto h-[36rem] rounded-2xl"
+                  width={250}
+                  height={500}
+                  className="w-auto h-80 rounded-2xl"
                   priority
                 />
               </div>
@@ -174,9 +174,9 @@ export default function ScreenshotDisplay() {
                   <Image
                     src={currentAssets.webScreenshot}
                     alt="Web Application Screenshot"
-                    width={450}
-                    height={280}
-                    className="w-auto h-64 rounded-2xl"
+                    width={350}
+                    height={220}
+                    className="w-auto h-48 rounded-2xl"
                     priority
                   />
                 </div>
