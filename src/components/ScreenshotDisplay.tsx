@@ -174,9 +174,9 @@ export default function ScreenshotDisplay() {
                   <Image
                     src={currentAssets.webScreenshot}
                     alt="Web Application Screenshot"
-                    width={350}
-                    height={220}
-                    className="w-auto h-48 rounded-2xl"
+                    width={280}
+                    height={175}
+                    className="w-auto h-36 rounded-2xl"
                     priority
                   />
                 </div>

@@ -55,7 +55,7 @@ export default function Hero() {
                 initial="initial"
                 animate={heroInView ? "animate" : "initial"}
               >
-                Product Leader & Founder
+                Product Leader
               </motion.h1>
               <motion.h2
                 className="text-2xl md:text-3xl text-[var(--text-secondary)] font-medium"
@@ -117,7 +117,7 @@ export default function Hero() {
               <div className="w-80 h-80 mx-auto bg-[var(--background-secondary)] border border-[var(--border)] rounded-2xl overflow-hidden flex items-center justify-center">
                 <Image
                   src="/profile-pic.jpeg"
-                  alt="Richard Strauss - Product Leader & Founder"
+                  alt="Richard Strauss - Product Leader"
                   width={320}
                   height={320}
                   className="w-full h-full object-cover"

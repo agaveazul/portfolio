@@ -29,7 +29,7 @@ const experienceData: TimelineItem[] = [
     id: 1,
     period: "May 2024 - Present",
     company: "AIR MILES",
-    role: "Product Manager",
+    role: "Senior Product Manager",
     location: "Toronto, ON",
     description:
       "Leading product development for AIR MILES Receipts and AIR MILES Rewards platforms. Implementing cutting-edge LLM and OCR technologies for automated receipt reading and intelligent offer matching, plus ML-driven personalization systems.",
