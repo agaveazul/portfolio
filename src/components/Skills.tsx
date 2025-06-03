@@ -14,61 +14,64 @@ import { useInView } from "@/hooks/useInView";
 
 interface SkillCategory {
   title: string;
-  skills: string[];
+  skills: SkillWithProficiency[];
+}
+
+interface SkillWithProficiency {
+  name: string;
+  years: string;
 }
 
 const skillsData: SkillCategory[] = [
   {
     title: "Product Management",
     skills: [
-      "Product Strategy",
-      "Roadmap Planning",
-      "User Research",
-      "A/B Testing",
-      "Analytics",
-      "Stakeholder Management",
-      "Team Leadership",
-      "Go-to-Market",
+      { name: "Product Strategy", years: "9+ years" },
+      { name: "Roadmap Planning", years: "8+ years" },
+      { name: "User Research", years: "7+ years" },
+      { name: "A/B Testing", years: "6+ years" },
+      { name: "Analytics", years: "8+ years" },
+      { name: "Stakeholder Management", years: "9+ years" },
+      { name: "Team Leadership", years: "5+ years" },
+      { name: "Go-to-Market", years: "4+ years" },
     ],
   },
   {
     title: "Generative AI & LLMs",
     skills: [
-      "OpenAI API",
-      "Langchain",
-      "Langfuse",
-      "Python",
-      "Prompt Engineering",
-      "RAG Systems",
-      "LLM Applications",
-      "OCR Technology",
-      "Machine Learning",
+      { name: "OpenAI API", years: "1+ years" },
+      { name: "Langchain", years: "1+ years" },
+      { name: "Python", years: "2+ years" },
+      { name: "Prompt Engineering", years: "1+ years" },
+      { name: "RAG Systems", years: "1+ years" },
+      { name: "LLM Applications", years: "1+ years" },
+      { name: "OCR Technology", years: "1+ years" },
+      { name: "Machine Learning", years: "3+ years" },
     ],
   },
   {
     title: "Development & Technical",
     skills: [
-      "JavaScript",
-      "React",
-      "React Native",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "Mongoose",
-      "API Design",
+      { name: "JavaScript", years: "6+ years" },
+      { name: "React", years: "4+ years" },
+      { name: "React Native", years: "4+ years" },
+      { name: "Node.js", years: "4+ years" },
+      { name: "Express", years: "3+ years" },
+      { name: "MongoDB", years: "4+ years" },
+      { name: "Mongoose", years: "3+ years" },
+      { name: "API Design", years: "5+ years" },
     ],
   },
   {
     title: "Tools & Platforms",
     skills: [
-      "Google Analytics",
-      "Adobe Analytics",
-      "JIRA",
-      "Confluence",
-      "Aha!",
-      "UserTesting",
-      "Figma",
-      "Mixpanel",
+      { name: "Google Analytics", years: "8+ years" },
+      { name: "Adobe Analytics", years: "4+ years" },
+      { name: "JIRA", years: "9+ years" },
+      { name: "Confluence", years: "7+ years" },
+      { name: "Aha!", years: "3+ years" },
+      { name: "UserTesting", years: "5+ years" },
+      { name: "Figma", years: "3+ years" },
     ],
   },
 ];
@@ -102,30 +105,17 @@ function SkillCategoryCard({ category }: { category: SkillCategory }) {
         {category.skills.map((skill, skillIndex) => (
           <motion.div
             key={skillIndex}
-            className="flex items-center justify-between"
+            className="group"
             variants={skillItem}
             {...skillItemHover}
           >
-            <span className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-200">
-              {skill}
-            </span>
-            <div className="flex space-x-1">
-              {/* Animated proficiency indicator */}
-              {[1, 2, 3, 4].map((dot) => (
-                <motion.div
-                  key={dot}
-                  className={`w-2 h-2 rounded-full ${
-                    dot <= 3 ? "bg-[var(--accent)]" : "bg-[var(--border-light)]"
-                  }`}
-                  initial={{ scale: 0 }}
-                  animate={hasBeenInView ? { scale: 1 } : { scale: 0 }}
-                  transition={{
-                    delay: skillIndex * 0.1 + dot * 0.05,
-                    duration: 0.3,
-                    ease: "easeOut",
-                  }}
-                />
-              ))}
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors duration-200">
+                {skill.name}
+              </span>
+              <span className="text-xs text-[var(--text-secondary)] opacity-70">
+                {skill.years}
+              </span>
             </div>
           </motion.div>
         ))}
@@ -159,15 +149,16 @@ export default function Skills() {
             Skills & Technologies
           </h2>
           <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-            A comprehensive toolkit spanning product management, generative AI,
-            and technical development to build and scale impactful SaaS
+            Expertise across four core domains with measurable proficiency
+            levels, spanning product management, cutting-edge AI, technical
+            development, and platform tools to build and scale impactful SaaS
             products.
           </p>
         </motion.div>
 
         <motion.div
           ref={gridRef}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8"
           variants={skillsContainer}
           initial="initial"
           animate={gridInView ? "animate" : "initial"}
@@ -193,7 +184,11 @@ export default function Skills() {
           >
             <motion.div className="text-center" variants={statsCard}>
               <div className="text-2xl font-semibold text-[var(--text-primary)]">
-                33+
+                {skillsData.reduce(
+                  (total, category) => total + category.skills.length,
+                  0
+                )}
+                +
               </div>
               <div className="text-sm text-[var(--text-secondary)]">
                 Skills & Tools

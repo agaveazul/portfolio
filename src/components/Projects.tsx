@@ -10,6 +10,7 @@ import {
   projectCardContainer,
 } from "@/utils/animations";
 import { useInView } from "@/hooks/useInView";
+import Image from "next/image";
 
 interface Project {
   id: number;
@@ -26,54 +27,56 @@ interface Project {
 const projectsData: Project[] = [
   {
     id: 1,
-    title: "MENU Loyalty Platform",
-    description: "Zero-to-one B2B2C loyalty platform for restaurant brands",
+    title: "AIR MILES Receipts",
+    description: "LLM and OCR-powered receipt matching platform",
     longDescription:
-      "Led the product development of a comprehensive loyalty platform deployed across mobile, web, and kiosk applications. Enabled large restaurant brands to create custom loyalty programs with flexible API integrations. Platform contributed to securing global enterprise deals.",
+      "Leading product development for AIR MILES Receipts platform using cutting-edge LLM and OCR technologies for automated receipt reading and intelligent offer matching. Implementing machine learning-driven personalization systems to enhance member experience and drive engagement.",
     technologies: [
+      "LLMs",
+      "OCR Technology",
+      "Machine Learning",
       "Product Strategy",
-      "API Design",
-      "Mobile Apps",
-      "Cross-platform",
-      "B2B2C",
+      "Personalization",
     ],
-    demoUrl: "https://menu.app",
+    demoUrl: "https://www.airmiles.ca/en/receipts.html",
     githubUrl: "",
+    imageUrl: "/project-am-receipts.png",
     featured: true,
   },
   {
     id: 2,
-    title: "AI-Powered Document Search",
-    description: "LLM-based document search and summarization tool",
+    title: "Kauwela Poke",
+    description: "Restaurant eCommerce platform with multi-channel ordering",
     longDescription:
-      "Built a prototype PDF document searcher using LLMs and RAG (Retrieval-Augmented Generation) systems. Implemented semantic search capabilities with OpenAI embeddings and Langchain for document processing and intelligent query responses.",
+      "Comprehensive restaurant eCommerce platform featuring online ordering, menu management, location finder, and integrated delivery partnerships. Built for Hawaiian poke restaurant chain with mobile app, web ordering, and extensive third-party integrations for seamless customer experience.",
     technologies: [
-      "OpenAI API",
-      "Langchain",
-      "Python",
-      "RAG Systems",
-      "LLM Applications",
+      "eCommerce",
+      "Mobile Apps",
+      "API Integrations",
+      "Multi-channel Ordering",
+      "Restaurant Tech",
     ],
-    demoUrl: "",
-    githubUrl: "https://github.com/richardstrauss/ai-document-search",
+    demoUrl: "https://www.kauwelapoke.com/",
+    githubUrl: "",
+    imageUrl: "/project-kauwela.png",
     featured: true,
   },
   {
     id: 3,
-    title: "como - Restaurant Discovery App",
-    description:
-      "Mobile platform for friend-to-friend restaurant recommendations",
+    title: "Como",
+    description: "Social restaurant discovery platform",
     longDescription:
-      "Founded and developed a mobile restaurant discovery platform built on friend-to-friend recommendations. Created iOS and Android apps using React Native and MERN stack, featuring social networking, recommendation algorithms, and restaurant discovery features.",
+      "Founded and developed a mobile restaurant discovery platform built on friend-to-friend recommendations. Created iOS and Android apps using React Native and MERN stack, featuring social networking, recommendation algorithms, and restaurant discovery features for authentic dining experiences.",
     technologies: [
       "React Native",
       "Node.js",
       "MongoDB",
-      "Express",
+      "Social Features",
       "Product Strategy",
     ],
     demoUrl: "",
-    githubUrl: "https://instagram.com/comoapp",
+    githubUrl: "https://www.instagram.com/comoapp",
+    imageUrl: "/project-como.png",
     featured: true,
   },
 ];
@@ -90,29 +93,39 @@ function ProjectCard({ project }: { project: Project }) {
       animate={hasBeenInView ? "animate" : "initial"}
       {...projectCardContainer}
     >
-      {/* Project Image Placeholder */}
+      {/* Project Image */}
       <motion.div
         className="h-48 bg-[var(--border-light)] flex items-center justify-center overflow-hidden"
         variants={projectImage}
       >
-        <div className="text-center">
-          <svg
-            className="w-16 h-16 text-[var(--text-secondary)] mx-auto mb-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1}
-              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-            />
-          </svg>
-          <p className="text-sm text-[var(--text-secondary)]">
-            Project Screenshot
-          </p>
-        </div>
+        {project.imageUrl ? (
+          <Image
+            src={project.imageUrl}
+            alt={`${project.title} screenshot`}
+            width={400}
+            height={200}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="text-center">
+            <svg
+              className="w-16 h-16 text-[var(--text-secondary)] mx-auto mb-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1}
+                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+              />
+            </svg>
+            <p className="text-sm text-[var(--text-secondary)]">
+              Project Screenshot
+            </p>
+          </div>
+        )}
       </motion.div>
 
       <div className="p-6">
@@ -152,7 +165,7 @@ function ProjectCard({ project }: { project: Project }) {
               whileHover="whileHover"
               whileTap="whileTap"
             >
-              Live Demo
+              Explore More
             </motion.a>
           )}
           {project.githubUrl && (
@@ -165,7 +178,9 @@ function ProjectCard({ project }: { project: Project }) {
               whileHover="whileHover"
               whileTap="whileTap"
             >
-              View Code
+              {project.githubUrl.includes("github.com")
+                ? "View Code"
+                : "View Project"}
             </motion.a>
           )}
         </div>
@@ -196,9 +211,9 @@ export default function Projects() {
             Featured Projects
           </h2>
           <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-            A showcase of product leadership in launching SaaS platforms,
-            generative AI prototypes, and mobile applications that drive
-            business impact.
+            A showcase of current product leadership work including AI-powered
+            platforms, restaurant technology solutions, and social mobile
+            applications that drive business impact and user engagement.
           </p>
         </motion.div>
 

@@ -8,6 +8,9 @@ import {
 } from "@/utils/animations";
 import { useInView } from "@/hooks/useInView";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
+import { useActiveExperience } from "@/hooks/useActiveExperience";
+import { useState, useEffect } from "react";
+import { MotionValue } from "framer-motion";
 
 interface TimelineItem {
   id: number;
@@ -17,6 +20,7 @@ interface TimelineItem {
   location: string;
   description: string;
   achievements: string[];
+  skills: string[];
   technologies: string[];
 }
 
@@ -35,60 +39,40 @@ const experienceData: TimelineItem[] = [
       "Developing intelligent offer matching algorithms using machine learning",
       "Building ML-driven personalization systems to enhance member experience",
     ],
-    technologies: [
-      "LLMs",
-      "OCR Technology",
-      "Machine Learning",
-      "Personalization",
-      "Product Strategy",
-    ],
+    skills: ["Product Strategy", "Machine Learning", "Personalization"],
+    technologies: ["LLMs", "OCR Technology"],
   },
   {
     id: 2,
-    period: "2022 - April 2024",
-    company: "MENU Technologies",
+    period: "2021 - April 2024",
+    company: "PAR Ordering",
     role: "Group Product Manager",
     location: "Remote (US-based)",
     description:
-      "Leading product strategy for an enterprise eCommerce platform serving large scale restaurant brands. Managing a team of 4 PMs across ordering, menu management, customization, and loyalty domains.",
+      "Leading product strategy for an enterprise eCommerce platform serving large scale restaurant brands. Managing a team of 4 PMs across ordering, menu management, customization, and loyalty domains. Built and launched a zero-to-one loyalty platform across mobile, web, and kiosk applications.",
     achievements: [
-      "Launched reordering feature that increased conversion by 5%",
-      "Delivered menu gradual loading that reduced drop-offs by 10%",
+      "Launched loyalty platform that contributed to signing global deals with large restaurant brands",
       "Built ordering APIs product that unlocked new revenue stream through custom app development",
-      "Set product team vision, goals, and roadmap with business and technology leadership",
+      "Delivered menu gradual loading that reduced drop-offs by 10%",
+      "Delivered loyalty API adapter enabling new provider integrations",
+    ],
+    skills: [
+      "Product Strategy",
+      "Team Leadership",
+      "B2B2C",
+      "Cross-platform",
+      "Stakeholder Management",
     ],
     technologies: [
-      "Product Strategy",
       "APIs",
       "eCommerce",
-      "B2B2C",
-      "Team Leadership",
+      "Loyalty Systems",
+      "API Design",
+      "Mobile Apps",
     ],
   },
   {
     id: 3,
-    period: "2021 - 2022",
-    company: "MENU Technologies",
-    role: "Senior Product Manager",
-    location: "Remote (US-based)",
-    description:
-      "Built and launched a zero-to-one loyalty platform across mobile, web, and kiosk applications with a cross-functional development team of 12 members.",
-    achievements: [
-      "Launched loyalty platform that contributed to signing global deals with large restaurant brands",
-      "Delivered loyalty API adapter enabling new provider integrations",
-      "Extended attainable market through flexible integration capabilities",
-      "Led cross-functional team of 12 developers, designers, and stakeholders",
-    ],
-    technologies: [
-      "Loyalty Systems",
-      "API Design",
-      "Mobile Apps",
-      "Cross-platform",
-      "Stakeholder Management",
-    ],
-  },
-  {
-    id: 4,
     period: "2020 - 2022",
     company: "como",
     role: "Founder",
@@ -101,16 +85,16 @@ const experienceData: TimelineItem[] = [
       "Developed friend-to-friend recommendation algorithm and social features",
       "Managed product roadmap, user research, and go-to-market strategy",
     ],
-    technologies: [
-      "React Native",
-      "Node.js",
-      "MongoDB",
-      "Express",
+    skills: [
       "Product Strategy",
+      "Full-stack Development",
+      "User Research",
+      "Go-to-market Strategy",
     ],
+    technologies: ["React Native", "Node.js", "MongoDB", "Express"],
   },
   {
-    id: 5,
+    id: 4,
     period: "2015 - 2019",
     company: "Loblaw Digital",
     role: "Senior Product Manager & Head of Experimentation",
@@ -123,18 +107,21 @@ const experienceData: TimelineItem[] = [
       "Led internal consultancy team of 7 for experiment-led product development",
       "Managed site refresh from design to release with developers, designers, and business users",
     ],
-    technologies: [
-      "eCommerce",
-      "A/B Testing",
+    skills: [
       "Digital Strategy",
       "Team Leadership",
-      "Analytics",
+      "A/B Testing",
+      "Experimentation",
+      "Cross-functional Leadership",
     ],
+    technologies: ["eCommerce", "Analytics", "Testing Platforms"],
   },
 ];
 
 function TimelineItemComponent({ item }: { item: TimelineItem }) {
   const { ref, hasBeenInView } = useInView({ threshold: 0.3 });
+  const { activeExperienceId } = useActiveExperience();
+  const isActive = activeExperienceId === item.id;
 
   return (
     <motion.div
@@ -144,10 +131,16 @@ function TimelineItemComponent({ item }: { item: TimelineItem }) {
       initial="initial"
       animate={hasBeenInView ? "animate" : "initial"}
       data-timeline-item
+      data-experience-item
+      data-experience-id={item.id}
     >
-      {/* Timeline Dot */}
+      {/* Timeline Dot - Always matches experience color */}
       <motion.div
-        className="absolute left-6 w-4 h-4 bg-[var(--accent)] rounded-full border-2 border-[var(--background-secondary)] z-10"
+        className="absolute left-6 w-4 h-4 rounded-full border-2 border-[var(--background-secondary)] z-10 transition-colors duration-500"
+        data-timeline-dot={item.id}
+        style={{
+          backgroundColor: getExperienceBrandColor(item.id),
+        }}
         variants={timelineDot}
         initial="initial"
         animate={hasBeenInView ? "animate" : "initial"}
@@ -160,7 +153,14 @@ function TimelineItemComponent({ item }: { item: TimelineItem }) {
             <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-1">
               {item.role}
             </h3>
-            <p className="text-[var(--accent)] font-medium mb-1">
+            <p
+              className="font-medium mb-1 transition-colors duration-500"
+              style={{
+                color: isActive
+                  ? getExperienceBrandColor(item.id)
+                  : "var(--accent)",
+              }}
+            >
               {item.company}
             </p>
             <p className="text-sm text-[var(--text-secondary)]">
@@ -189,27 +189,56 @@ function TimelineItemComponent({ item }: { item: TimelineItem }) {
                 key={i}
                 className="text-sm text-[var(--text-secondary)] flex items-start"
               >
-                <span className="text-[var(--accent)] mr-2 mt-1">•</span>
+                <span
+                  className="mr-2 mt-1 transition-colors duration-500"
+                  style={{
+                    color: isActive
+                      ? getExperienceBrandColor(item.id)
+                      : "var(--accent)",
+                  }}
+                >
+                  •
+                </span>
                 {achievement}
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Technologies */}
-        <div>
-          <h4 className="text-sm font-medium text-[var(--text-primary)] mb-2">
-            Technologies Used
-          </h4>
-          <div className="flex flex-wrap gap-2">
-            {item.technologies.map((tech, i) => (
-              <span
-                key={i}
-                className="text-xs bg-[var(--background-secondary)] border border-[var(--border-light)] text-[var(--text-secondary)] px-2 py-1 rounded"
-              >
-                {tech}
-              </span>
-            ))}
+        {/* Skills and Technologies */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Skills - Left Side */}
+          <div>
+            <h4 className="text-sm font-medium text-[var(--text-primary)] mb-2">
+              Skills Applied
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {item.skills.map((skill, i) => (
+                <span
+                  key={i}
+                  className="text-xs bg-[var(--background-secondary)] border border-[var(--border-light)] text-[var(--text-secondary)] px-2 py-1 rounded"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Technologies - Right Side */}
+          <div>
+            <h4 className="text-sm font-medium text-[var(--text-primary)] mb-2">
+              Technologies Used
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {item.technologies.map((tech, i) => (
+                <span
+                  key={i}
+                  className="text-xs bg-[var(--background-secondary)] border border-[var(--border-light)] text-[var(--text-secondary)] px-2 py-1 rounded"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -243,18 +272,12 @@ export default function Timeline() {
           </p>
         </motion.div>
 
-        <div ref={timelineRef} className="relative">
+        <div ref={timelineRef} className="relative" data-timeline-ref>
           {/* Background Timeline Line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-[var(--border-light)]" />
 
-          {/* Progressive Timeline Line */}
-          <motion.div
-            className="absolute left-8 top-0 w-0.5 bg-[var(--accent)] origin-top"
-            style={{
-              scaleY,
-              height: "100%",
-            }}
-          />
+          {/* Dynamic Timeline Segments Based on Actual Dot Positions */}
+          <DynamicTimelineSegments scaleY={scaleY} />
 
           <motion.div
             className="space-y-12"
@@ -269,5 +292,153 @@ export default function Timeline() {
         </div>
       </div>
     </section>
+  );
+}
+
+// Helper function to get brand color by experience ID
+function getExperienceBrandColor(experienceId: number): string {
+  const colorMap: Record<number, string> = {
+    1: "#1f68da", // AIR MILES
+    2: "#2f3452", // PAR Ordering - Group Product Manager
+    3: "#E7544F", // como
+    4: "#FF4C4C", // Loblaw Digital
+  };
+  return colorMap[experienceId] || "var(--accent)";
+}
+
+// Dynamic Timeline Segments Component
+function DynamicTimelineSegments({ scaleY }: { scaleY: MotionValue<number> }) {
+  const [segments, setSegments] = useState<
+    Array<{
+      id: string | number;
+      startPercent: number;
+      endPercent: number;
+      color: string;
+    }>
+  >([]);
+
+  useEffect(() => {
+    const calculateSegments = () => {
+      const timelineContainer = document.querySelector("[data-timeline-ref]");
+      if (!timelineContainer) return;
+
+      const containerRect = timelineContainer.getBoundingClientRect();
+      const containerHeight = containerRect.height;
+
+      if (containerHeight === 0) return;
+
+      const dotPositions: Array<{
+        id: number;
+        position: number;
+        color: string;
+      }> = [];
+
+      // Get actual dot positions
+      experienceData.forEach((item) => {
+        const dotElement = document.querySelector(
+          `[data-timeline-dot="${item.id}"]`
+        );
+        if (dotElement) {
+          const dotRect = dotElement.getBoundingClientRect();
+          const dotCenter = dotRect.top + dotRect.height / 2;
+          const relativePosition =
+            (dotCenter - containerRect.top) / containerHeight;
+
+          dotPositions.push({
+            id: item.id,
+            position: Math.max(0, Math.min(1, relativePosition)),
+            color: getExperienceBrandColor(item.id),
+          });
+        }
+      });
+
+      // Sort by position
+      dotPositions.sort((a, b) => a.position - b.position);
+
+      // Create segments where each experience owns its section until the next experience's dot
+      const newSegments: Array<{
+        id: string | number;
+        startPercent: number;
+        endPercent: number;
+        color: string;
+      }> = [];
+
+      dotPositions.forEach((dot, index) => {
+        let startPercent;
+        let endPercent;
+
+        if (index === 0) {
+          // First experience: from start to next experience's dot
+          startPercent = 0;
+          if (dotPositions.length > 1) {
+            const nextDot = dotPositions[index + 1];
+            endPercent = nextDot.position * 100;
+          } else {
+            endPercent = 100; // Only one experience
+          }
+        } else if (index === dotPositions.length - 1) {
+          // Last experience: from its own dot to end
+          startPercent = dot.position * 100;
+          endPercent = 100;
+        } else {
+          // Middle experiences: from its own dot to next experience's dot
+          const nextDot = dotPositions[index + 1];
+          startPercent = dot.position * 100;
+          endPercent = nextDot.position * 100;
+        }
+
+        newSegments.push({
+          id: dot.id,
+          startPercent,
+          endPercent,
+          color: dot.color,
+        });
+      });
+
+      setSegments(newSegments);
+    };
+
+    // Calculate initially and on changes
+    const timeoutId = setTimeout(calculateSegments, 100);
+
+    const handleUpdate = () => {
+      requestAnimationFrame(calculateSegments);
+    };
+
+    window.addEventListener("scroll", handleUpdate, { passive: true });
+    window.addEventListener("resize", handleUpdate, { passive: true });
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("scroll", handleUpdate);
+      window.removeEventListener("resize", handleUpdate);
+    };
+  }, []);
+
+  return (
+    <>
+      {/* Colored segments based on actual dot positions */}
+      {segments.map((segment) => (
+        <div
+          key={`segment-${segment.id}`}
+          className="absolute left-8 w-0.5"
+          style={{
+            backgroundColor: segment.color,
+            top: `${segment.startPercent}%`,
+            height: `${segment.endPercent - segment.startPercent}%`,
+          }}
+        />
+      ))}
+
+      {/* Progressive Timeline Mask */}
+      <motion.div
+        className="absolute left-8 top-0 w-0.5 bg-[var(--border-light)] origin-bottom z-10"
+        style={{
+          scaleY: scaleY ? 1 - scaleY.get() : 1,
+          height: "100%",
+          transformOrigin: "bottom",
+        }}
+      />
+    </>
   );
 }
