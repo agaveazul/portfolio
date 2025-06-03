@@ -26,7 +26,7 @@ export default function Hero() {
   });
 
   const { displayValue: projectsCount } = useCountUp({
-    target: 26,
+    target: 32,
     suffix: "+",
     delay: statsInView ? 1.5 : 0,
     duration: 2,
@@ -64,7 +64,7 @@ export default function Hero() {
                 animate={heroInView ? "animate" : "initial"}
                 transition={{ delay: 0.2 }}
               >
-                Building impactful SaaS products
+                Building impactful digital products
               </motion.h2>
             </div>
 
@@ -75,11 +75,11 @@ export default function Hero() {
               animate={heroInView ? "animate" : "initial"}
               transition={{ delay: 0.4 }}
             >
-              Passionate about launching and scaling SaaS products in B2C and
+              Passionate about launching and scaling digital products in B2C and
               B2B2C spaces. 9+ years leading products through conception, high
-              growth, and scaling phases. Currently leading product for AIR
-              MILES platforms, implementing LLMs, OCR, and ML for receipt
-              processing and personalization.
+              growth, and scaling phases. Currently leading multiple products
+              for AIR MILES, implementing LLMs and OCR technology for receipt
+              processing and ML models for personalization.
             </motion.p>
 
             <motion.div

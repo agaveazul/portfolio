@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Richard Strauss - Product Leader",
   description:
-    "Professional portfolio of Richard Strauss - Product Leader specializing in SaaS platforms, B2C/B2B2C products, and generative AI applications",
+    "Professional portfolio of Richard Strauss - Product Leader specializing in digital products, B2C/B2B2C, and generative AI technologies",
   icons: {
     icon: [
       { url: "/favicon.png", sizes: "32x32", type: "image/png" },

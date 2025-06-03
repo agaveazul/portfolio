@@ -32,12 +32,12 @@ const experienceData: TimelineItem[] = [
     role: "Senior Product Manager",
     location: "Toronto, ON",
     description:
-      "Leading product development for AIR MILES Receipts and AIR MILES Rewards platforms. Implementing cutting-edge LLM and OCR technologies for automated receipt reading and intelligent offer matching, plus ML-driven personalization systems.",
+      "Leading product development for AIR MILES Receipts and AIR MILES Rewards platforms. Implementing LLM and OCR technologies for automated receipt reading and intelligent offer matching, plus ML-driven personalization systems.",
     achievements: [
-      "Leading product strategy for AIR MILES Receipts and AIR MILES Rewards platforms",
-      "Implementing LLM and OCR technology for automated receipt reading and processing",
-      "Developing intelligent offer matching algorithms using machine learning",
-      "Building ML-driven personalization systems to enhance member experience",
+      "Partner with lead architect to implement LLM-assisted matching algorithm improving match rates by 20%",
+      "Organize with dev lead a full rewrite of frontend app from native to Flutter improving development efficiency",
+      "Collaborate with UX and marketing teams to rebrand app and enhance user experience with delightful interactions",
+      "Work with data science team to implement machine learning personalization system for reward recommendations",
     ],
     skills: ["Product Strategy", "Machine Learning", "Personalization"],
     technologies: ["LLMs", "OCR Technology"],
@@ -49,12 +49,12 @@ const experienceData: TimelineItem[] = [
     role: "Group Product Manager",
     location: "Remote (US-based)",
     description:
-      "Leading product strategy for an enterprise eCommerce platform serving large scale restaurant brands. Managing a team of 4 PMs across ordering, menu management, customization, and loyalty domains. Built and launched a zero-to-one loyalty platform across mobile, web, and kiosk applications.",
+      "Led product strategy for an enterprise eCommerce platform serving large scale restaurant brands. Managed a team of 4 product managers across ordering, menu management, customization, and loyalty domains.",
     achievements: [
-      "Launched loyalty platform that contributed to signing global deals with large restaurant brands",
-      "Built ordering APIs product that unlocked new revenue stream through custom app development",
-      "Delivered menu gradual loading that reduced drop-offs by 10%",
-      "Delivered loyalty API adapter enabling new provider integrations",
+      "Launched a loyalty platform that contributed to signing global deals with large restaurant brands",
+      "Built an ordering API product that unlocked new revenue stream through custom app development",
+      "Delivered gradual loading feature that reduced drop-offs by 10%",
+      "Released a loyalty API adapter enabling new provider integrations",
     ],
     skills: [
       "Product Strategy",
@@ -80,7 +80,7 @@ const experienceData: TimelineItem[] = [
     description:
       "Founded and built a mobile restaurant discovery platform based on friend-to-friend recommendations. Handled all aspects from vision to technical execution.",
     achievements: [
-      "Envisioned, designed, prototyped, and launched iOS and Android apps in 6 months",
+      "Envisioned, designed, prototyped, and launched iOS and Android apps in 6 months before AI coding tools existed",
       "Built full-stack solution on MERN stack (MongoDB, Express, React Native, Node.js)",
       "Developed friend-to-friend recommendation algorithm and social features",
       "Managed product roadmap, user research, and go-to-market strategy",
