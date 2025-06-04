@@ -30,7 +30,7 @@ const projectsData: Project[] = [
     title: "AIR MILES Receipts",
     description: "LLM and OCR-powered receipt matching platform",
     longDescription:
-      "Leading product development for AIR MILES Receipts platform using cutting-edge LLM and OCR technologies for automated receipt reading and intelligent offer matching. Implementing machine learning-driven personalization systems to enhance member experience and drive engagement.",
+      "Leading product development for AIR MILES Receipts platform using LLM and OCR technologies for automated receipt reading and intelligent offer matching. Implementing machine learning-driven personalization systems to enhance member experience and drive engagement.",
     technologies: [
       "LLMs",
       "OCR Technology",

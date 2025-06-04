@@ -201,7 +201,8 @@ export default function Contact() {
                 Medium
               </a>
               <a
-                href="#"
+                href="/Richard_Strauss_Resume.pdf"
+                download="Richard_Strauss_Resume.pdf"
                 className="text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors duration-200"
               >
                 Resume

@@ -42,9 +42,10 @@ export default function Hero() {
   return (
     <section
       id="about"
-      className="min-h-screen bg-[var(--background)] flex items-center py-20"
+      className="min-h-screen bg-[var(--background)] flex items-center py-20 relative overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      {/* Content with higher z-index */}
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <motion.div ref={heroRef} className="space-y-8">
@@ -79,7 +80,7 @@ export default function Hero() {
               B2B2C spaces. 9+ years leading products through conception, high
               growth, and scaling phases. Currently leading multiple products
               for AIR MILES, implementing LLMs and OCR technology for receipt
-              processing and ML models for rewards personalization.
+              processing and ML models for personalization.
             </motion.p>
 
             <motion.div
