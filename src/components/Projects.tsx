@@ -28,16 +28,11 @@ const projectsData: Project[] = [
   {
     id: 1,
     title: "AIR MILES Receipts",
-    description: "LLM and OCR-powered receipt matching platform",
+    description:
+      "Intelligent receipt scanning and offer-matching platform powered by OCR and LLMs",
     longDescription:
-      "Leading product development for AIR MILES Receipts platform using LLM and OCR technologies for automated receipt reading and intelligent offer matching. Implementing machine learning-driven personalization systems to enhance member experience and drive engagement.",
-    technologies: [
-      "LLMs",
-      "OCR Technology",
-      "Machine Learning",
-      "Product Strategy",
-      "Personalization",
-    ],
+      "Intelligent receipt scanning and offer-matching platform powered by OCR and LLMs.",
+    technologies: ["LLMs", "OCR", "ML", "AI Strategy"],
     demoUrl: "https://www.airmiles.ca/en/receipts.html",
     githubUrl: "",
     imageUrl: "/project-am-receipts.png",
@@ -46,16 +41,10 @@ const projectsData: Project[] = [
   {
     id: 2,
     title: "Kauwela Poke",
-    description: "Restaurant eCommerce platform with multi-channel ordering",
+    description: "Full-stack eCommerce platform for restaurant chain",
     longDescription:
-      "Comprehensive restaurant eCommerce platform featuring online ordering, menu management, location finder, and integrated delivery partnerships. Built for Hawaiian poke restaurant chain with mobile app, web ordering, and extensive third-party integrations for seamless customer experience.",
-    technologies: [
-      "eCommerce",
-      "Mobile Apps",
-      "API Integrations",
-      "Multi-channel Ordering",
-      "Restaurant Tech",
-    ],
+      "Built a full-stack eCommerce platform for restaurants — online ordering, loyalty, delivery integrations, and mobile/web apps.",
+    technologies: ["APIs", "React Native", "Multi-channel Ordering"],
     demoUrl: "https://www.kauwelapoke.com/",
     githubUrl: "",
     imageUrl: "/project-kauwela.png",
@@ -63,17 +52,12 @@ const projectsData: Project[] = [
   },
   {
     id: 3,
-    title: "Como",
-    description: "Social restaurant discovery platform",
+    title: "Como (Founder)",
+    description:
+      "Mobile restaurant discovery app based on social recommendations",
     longDescription:
-      "Founded and developed a mobile restaurant discovery platform built on friend-to-friend recommendations. Created iOS and Android apps using React Native and MERN stack, featuring social networking, recommendation algorithms, and restaurant discovery features for authentic dining experiences.",
-    technologies: [
-      "React Native",
-      "Node.js",
-      "MongoDB",
-      "Social Features",
-      "Product Strategy",
-    ],
+      "Mobile restaurant discovery app based on social recommendations. Designed and shipped full-stack product in 6 months.",
+    technologies: ["React Native", "Node.js", "MongoDB", "Social Features"],
     demoUrl: "",
     githubUrl: "https://www.instagram.com/comoapp",
     imageUrl: "/project-como.png",

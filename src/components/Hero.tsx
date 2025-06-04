@@ -59,14 +59,23 @@ export default function Hero() {
                 Product Leader
               </motion.h1>
               <motion.h2
-                className="text-2xl md:text-3xl text-[var(--text-secondary)] font-medium"
+                className="text-2xl md:text-3xl text-[var(--text-secondary)] font-medium whitespace-nowrap"
                 variants={fadeInUp}
                 initial="initial"
                 animate={heroInView ? "animate" : "initial"}
                 transition={{ delay: 0.2 }}
               >
-                Building impactful digital products
+                AI & Digital Innovation
               </motion.h2>
+              <motion.h3
+                className="text-lg md:text-xl text-[var(--text-secondary)] font-medium"
+                variants={fadeInUp}
+                initial="initial"
+                animate={heroInView ? "animate" : "initial"}
+                transition={{ delay: 0.3 }}
+              >
+                Driving next-gen experiences in B2C & B2B2C markets
+              </motion.h3>
             </div>
 
             <motion.p
@@ -76,11 +85,11 @@ export default function Hero() {
               animate={heroInView ? "animate" : "initial"}
               transition={{ delay: 0.4 }}
             >
-              Passionate about launching and scaling digital products in B2C and
-              B2B2C spaces. 9+ years leading products through conception, high
-              growth, and scaling phases. Currently leading multiple products
-              for AIR MILES, implementing LLMs and OCR technology for receipt
-              processing and ML models for personalization.
+              I'm Richard Strauss, a senior product leader with 9+ years of
+              experience building and scaling digital products across eCommerce,
+              loyalty, and SaaS. I specialize in generative AI, LLMs, and
+              personalization systems — currently leading AI-driven product
+              initiatives at AIR MILES.
             </motion.p>
 
             <motion.div
