@@ -98,9 +98,9 @@ const experienceData: TimelineItem[] = [
     role: "Senior Product Manager & Head of Experimentation",
     location: "Toronto, ON",
     description:
-      "Led product strategy across Loblaw's digital portfolio, including Canada's largest grocery and apparel businesses. Created a centralized experimentation program used by 26+ teams.",
+      "Led product strategy across Loblaw&apos;s digital portfolio, including Canada&apos;s largest grocery and apparel businesses. Created a centralized experimentation program used by 26+ teams.",
     achievements: [
-      "Owned eCommerce roadmap for JoeFresh.com, Canada's top apparel site",
+      "Owned eCommerce roadmap for JoeFresh.com, Canada&apos;s top apparel site",
       "Built and scaled experimentation CoE supporting 26+ digital properties",
       "Led cross-functional team of 7 → drove experiment-based product delivery",
       "Managed complete redesign and relaunch of digital storefronts",

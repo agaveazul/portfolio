@@ -85,7 +85,7 @@ export default function Hero() {
               animate={heroInView ? "animate" : "initial"}
               transition={{ delay: 0.4 }}
             >
-              I'm Richard Strauss, a senior product leader with 9+ years of
+              I&apos;m Richard Strauss, a senior product leader with 9+ years of
               experience building and scaling digital products across eCommerce,
               loyalty, and SaaS. I specialize in generative AI, LLMs, and
               personalization systems — currently leading AI-driven product
