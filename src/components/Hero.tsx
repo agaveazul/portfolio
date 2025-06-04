@@ -87,7 +87,7 @@ export default function Hero() {
             >
               I&apos;m Richard Strauss, a senior product leader with 9+ years of
               experience building and scaling digital products across eCommerce,
-              loyalty, and SaaS. I specialize in generative AI, LLMs, and
+              loyalty, and SaaS. I specialize in generative AI, platforms, and
               personalization systems — currently leading AI-driven product
               initiatives at AIR MILES.
             </motion.p>
