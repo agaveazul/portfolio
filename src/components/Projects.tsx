@@ -45,7 +45,7 @@ const projectsData: Project[] = [
     longDescription:
       "Built a full-stack eCommerce platform for restaurants — online ordering, loyalty, delivery integrations, and mobile/web apps.",
     technologies: ["APIs", "React Native", "Multi-channel Ordering"],
-    demoUrl: "https://www.kauwelapoke.com/",
+    demoUrl: "https://order.kauwelapoke.com/",
     githubUrl: "",
     imageUrl: "/project-kauwela.png",
     featured: true,
